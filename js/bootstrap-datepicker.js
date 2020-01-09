@@ -212,11 +212,15 @@
 				[$(document), {
 					mousedown: $.proxy(function (e) {
 						// Clicked outside the datepicker, hide it
+					  var _size = function (o) {
+							return o.length || (o.size && o.size());
+						}
+
 						if (!(
 							this.element.is(e.target) ||
-							this.element.find(e.target).size() ||
+							_size(this.element.find(e.target)) ||
 							this.picker.is(e.target) ||
-							this.picker.find(e.target).size()
+							_size(this.picker.find(e.target))
 						)) {
 							this.hide();
 						}
